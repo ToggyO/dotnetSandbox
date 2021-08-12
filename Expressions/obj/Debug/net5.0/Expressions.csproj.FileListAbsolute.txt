@@ -1,0 +1,15 @@
+/Users/user/Projects/Sandbox/Expressions/bin/Debug/net5.0/Expressions.deps.json
+/Users/user/Projects/Sandbox/Expressions/bin/Debug/net5.0/Expressions.runtimeconfig.json
+/Users/user/Projects/Sandbox/Expressions/bin/Debug/net5.0/Expressions.runtimeconfig.dev.json
+/Users/user/Projects/Sandbox/Expressions/bin/Debug/net5.0/Expressions.dll
+/Users/user/Projects/Sandbox/Expressions/bin/Debug/net5.0/ref/Expressions.dll
+/Users/user/Projects/Sandbox/Expressions/bin/Debug/net5.0/Expressions.pdb
+/Users/user/Projects/Sandbox/Expressions/obj/Debug/net5.0/Expressions.csproj.AssemblyReference.cache
+/Users/user/Projects/Sandbox/Expressions/obj/Debug/net5.0/Expressions.GeneratedMSBuildEditorConfig.editorconfig
+/Users/user/Projects/Sandbox/Expressions/obj/Debug/net5.0/Expressions.AssemblyInfoInputs.cache
+/Users/user/Projects/Sandbox/Expressions/obj/Debug/net5.0/Expressions.AssemblyInfo.cs
+/Users/user/Projects/Sandbox/Expressions/obj/Debug/net5.0/Expressions.csproj.CoreCompileInputs.cache
+/Users/user/Projects/Sandbox/Expressions/obj/Debug/net5.0/Expressions.dll
+/Users/user/Projects/Sandbox/Expressions/obj/Debug/net5.0/ref/Expressions.dll
+/Users/user/Projects/Sandbox/Expressions/obj/Debug/net5.0/Expressions.pdb
+/Users/user/Projects/Sandbox/Expressions/obj/Debug/net5.0/Expressions.genruntimeconfig.cache

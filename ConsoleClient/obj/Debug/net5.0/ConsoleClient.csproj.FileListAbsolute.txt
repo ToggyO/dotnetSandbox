@@ -1,0 +1,15 @@
+/Users/user/Projects/Sandbox/ConsoleClient/bin/Debug/net5.0/ConsoleClient.deps.json
+/Users/user/Projects/Sandbox/ConsoleClient/bin/Debug/net5.0/ConsoleClient.runtimeconfig.json
+/Users/user/Projects/Sandbox/ConsoleClient/bin/Debug/net5.0/ConsoleClient.runtimeconfig.dev.json
+/Users/user/Projects/Sandbox/ConsoleClient/bin/Debug/net5.0/ConsoleClient.dll
+/Users/user/Projects/Sandbox/ConsoleClient/bin/Debug/net5.0/ref/ConsoleClient.dll
+/Users/user/Projects/Sandbox/ConsoleClient/bin/Debug/net5.0/ConsoleClient.pdb
+/Users/user/Projects/Sandbox/ConsoleClient/obj/Debug/net5.0/ConsoleClient.csproj.AssemblyReference.cache
+/Users/user/Projects/Sandbox/ConsoleClient/obj/Debug/net5.0/ConsoleClient.GeneratedMSBuildEditorConfig.editorconfig
+/Users/user/Projects/Sandbox/ConsoleClient/obj/Debug/net5.0/ConsoleClient.AssemblyInfoInputs.cache
+/Users/user/Projects/Sandbox/ConsoleClient/obj/Debug/net5.0/ConsoleClient.AssemblyInfo.cs
+/Users/user/Projects/Sandbox/ConsoleClient/obj/Debug/net5.0/ConsoleClient.csproj.CoreCompileInputs.cache
+/Users/user/Projects/Sandbox/ConsoleClient/obj/Debug/net5.0/ConsoleClient.dll
+/Users/user/Projects/Sandbox/ConsoleClient/obj/Debug/net5.0/ref/ConsoleClient.dll
+/Users/user/Projects/Sandbox/ConsoleClient/obj/Debug/net5.0/ConsoleClient.pdb
+/Users/user/Projects/Sandbox/ConsoleClient/obj/Debug/net5.0/ConsoleClient.genruntimeconfig.cache
