@@ -3,33 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using Expressions.Libs.Validator.Results;
 
 namespace Expressions.Libs.Validator
 {
-    public class Validation
+    public class Validator<T> : IValidator<T>  where T : class
     {
-        
-        public PropertyInfo Property { get; set; }
-        
-        public Type PropertyType => Property.PropertyType.;
+        private List<IValidationRule> _validationRules;
 
-        // public Func<TProp, bool> Predicate { get; set; }
-        public Func<Type, bool> Predicate { get; set; }
-    }
-
-    public class ValidationResult
-    {
-        
-    }
-    
-    public class Validator<T> where T : class
-    {
-        private List<Validation> _validations;
-
-        public Validator()
-        {
-            _validations = new List<Validation>();
-        }
+        public Validator() =>_validationRules = new List<IValidationRule>();
 
         public Validator<T> AddValidation<TProp>(
             Expression<Func<T, TProp>> propertyExpression, Func<TProp, bool> predicate)
@@ -39,7 +21,7 @@ namespace Expressions.Libs.Validator
             if (propertyInfo is null)
                 throw new InvalidOperationException("Please provide a valid property expression.");
             
-            _validations.Add(new Validation
+            _validationRules.Add(new ValidationRule<TProp>
             {
                 Property = propertyInfo,
                 Predicate = predicate,
@@ -49,15 +31,12 @@ namespace Expressions.Libs.Validator
 
         public bool Validate(T obj)
         {
-            var validationResults = new List<bool>();
+            var validationResults = new List<ValidationFailure>();
 
-            // foreach (var validation in _validations)
-            // {
-            //     var result = validation.Predicate(validation.Property.GetValue(obj));
-            //     validationResults.Add(result);
-            // }
+            foreach (var validation in _validationRules)
+                validationResults.Add(validation.Validate(obj));
 
-            return validationResults.Any(x => !x);
+            return validationResults.All(x => x);
         }
     }
 }
