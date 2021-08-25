@@ -5,7 +5,7 @@ namespace Validator.Internal
     /// <summary>
     /// Represents internal extensions.
     /// </summary>
-    public static class ExtensionsInternal
+    internal static class ExtensionsInternal
     {
         /// <summary>
         /// Check if value is null.
