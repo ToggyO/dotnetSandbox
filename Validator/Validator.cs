@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using Expressions.Libs.Validator;
 using Expressions.Libs.Validator.Results;
+using Validator.Internal;
 
-namespace Expressions.Libs.Validator
+namespace Validator
 {
     public class Validator<T> : IValidator<T>  where T : class
     {
@@ -13,14 +15,12 @@ namespace Expressions.Libs.Validator
 
         public Validator() =>_validationRules = new List<IValidationRule>();
 
-        /// <summary>
-        /// Add validation rule by expression with boolean result.
-        /// </summary>
-        /// <param name="propertyExpression">Expression, that determines the property to validate.</param>
-        /// <param name="predicate">Validation condition.</param>
-        /// <typeparam name="TProp">Type of property to validate.</typeparam>
-        /// <returns>Instance of <see cref="Validator{T}"/>.</returns>
-        /// <exception cref="InvalidOperationException">Exception.</exception>
+        public IRuleBuilder<T, TProperty> AddValidationFor<TProperty>(Expression<Func<T, TProperty>> expression)
+        {
+            expression.Guard("Cannot pass null to AddValidationFor", nameof(expression));
+            var rule = new ValidationRule<T, TProperty>()
+        }
+        
         public Validator<T> AddValidation<TProp>(
             Expression<Func<T, TProp>> propertyExpression, Func<TProp, bool> predicate)
         {
