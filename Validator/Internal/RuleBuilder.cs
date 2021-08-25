@@ -1,14 +1,27 @@
 using Expressions.Libs.Validator;
+using Validator.Validators;
 
 namespace Validator.Internal
 {
-    public class RuleBuilder<T, TProperty> : IRuleBuilder<T, TProperty>
+    ///<inheritdoc cref="IRuleBuilder{T, TProperty}"/>
+    internal class RuleBuilder<T, TProperty> : IRuleBuilder<T, TProperty>
     {
-        public IValidationRule<T, TProperty> Rule { get; }
+        ///<inheritdoc cref="IRuleBuilder{T, TProperty}.Rule"/>
+        public IValidationRuleInternal<T, TProperty> Rule { get; }
 
-        public IRuleBuilder<T, TProperty> SetValidator(IValidationRule<T, TProperty> rule)
+        public RuleBuilder(IValidationRuleInternal<T, TProperty> rule) => Rule = rule;
+
+        ///<inheritdoc cref="IRuleBuilder{T, TProperty}.SetValidator"/>
+        public IRuleBuilder<T, TProperty> SetValidator(IPropertyValidator<T, TProperty> validator)
         {
-            throw new System.NotImplementedException();
+            Rule.AddValidator(validator);
+            return this;
+        }
+
+        // TODO: check
+        public void AddComponent(IRuleComponent<T, TProperty> component)
+        {
+            Rule.Components.Add
         }
     }
 }
