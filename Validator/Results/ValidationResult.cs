@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Expressions.Libs.Validator.Results
+namespace Validator.Results
 {
+    // TODO: add description
     public class ValidationResult
     {
         private readonly IList<ValidationFailure> _errors;

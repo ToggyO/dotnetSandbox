@@ -1,10 +1,9 @@
-using Expressions.Libs.Validator;
 using Validator.Validators;
 
 namespace Validator.Internal
 {
     ///<inheritdoc cref="IRuleBuilder{T, TProperty}"/>
-    internal class RuleBuilder<T, TProperty> : IRuleBuilder<T, TProperty>
+    internal class RuleBuilder<T, TProperty> : IRuleBuilder<T, TProperty>, IRuleBuilderInternal<T, TProperty>
     {
         ///<inheritdoc cref="IRuleBuilder{T, TProperty}.Rule"/>
         public IValidationRuleInternal<T, TProperty> Rule { get; }
@@ -18,10 +17,10 @@ namespace Validator.Internal
             return this;
         }
 
-        // TODO: check
-        public void AddComponent(IRuleComponent<T, TProperty> component)
-        {
-            Rule.Components.Add
-        }
+        /// <summary>
+        /// Add rule component to rule instance.
+        /// </summary>
+        /// <param name="component">Instance of <see cref="IRuleComponent{T, TProperty}"/>.</param>
+        public void AddComponent(IRuleComponent<T, TProperty> component) => Rule.Components.Add(component);
     }
 }

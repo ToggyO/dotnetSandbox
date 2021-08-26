@@ -11,12 +11,12 @@ namespace Validator.Internal
     /// </summary>
     /// <typeparam name="T">Type of instance to validate.</typeparam>
     /// <typeparam name="TProperty">Type of instance member.</typeparam>
-    internal interface IValidationRuleInternal<T, TProperty> : IValidationRuleInternal<T>
+    internal interface IValidationRuleInternal<T, TProperty> : IValidationRuleInternal<T>, IValidationRule<T, TProperty>
     {
         /// <summary>
         /// Collection of <see cref="RuleComponent{T, TProperty}"/>
         /// </summary>
-        List<RuleComponent<T, TProperty>> Components { get; }
+        new List<IRuleComponent<T, TProperty>> Components { get; }
     }
 
     /// <summary>
@@ -31,6 +31,6 @@ namespace Validator.Internal
         /// </summary>
         /// <param name="context">Instance of <see cref="ValidationContext{T}"/></param>
         /// <returns>Boolean validation result.</returns>
-        bool Validate(ValidationContext<T> context);
+        void Validate(ValidationContext<T> context);
     }
 }

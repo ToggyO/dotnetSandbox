@@ -9,15 +9,21 @@ namespace Validator
             var dto = new Dto
             {
                 Id = 0,
-                Name = null,
+                Name = "ololo",
                 Description = "",
             };
 
-            var validator = new Validator<Dto>();
+            IValidator<Dto> validator = new Validator<Dto>();
 
             validator.AddValidationFor(x => x.Name).NotNull();
 
-            validator.Validate(dto);
+            var context = new ValidationContext<Dto>(dto);
+            var result = validator.Validate(context);
+            
+            foreach (var error in result.Errors)
+            {
+                Console.WriteLine(error.ErrorMessage);
+            }
         }
     }
 

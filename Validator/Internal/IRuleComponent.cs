@@ -4,10 +4,14 @@ using Validator.Validators;
 
 namespace Validator.Internal
 {
-    // TODO: check
-    public interface IRuleComponent<T,out TProperty> : IRuleComponent
+    /// <summary>
+    /// An individual component within a rule with a validator attached.
+    /// </summary>
+    /// <typeparam name="T">Type of instance to validate.</typeparam>
+    /// <typeparam name="TProperty">Type of property being validated.</typeparam>
+    internal interface IRuleComponent<T,in TProperty> : IRuleComponent
     {
-
+        bool Validate(ValidationContext<T> context, TProperty value);
     }
 
     /// <summary>

@@ -1,5 +1,6 @@
-namespace Expressions.Libs.Validator.Results
+namespace Validator.Results
 {
+    // TODO: add description
     public class ValidationFailure
     {
         public string PropertyName { get; set; }

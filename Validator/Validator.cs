@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+
 using Validator.Internal;
+using Validator.Results;
 
 namespace Validator
 {
-    /// <summary>
-	/// Class for object validators.
-	/// </summary>
-	/// <typeparam name="T">The type of the object being validated. (temporrary ref values only) </typeparam>
+    /// <inheritdoc cref="IValidator{T}"/>.
     public class Validator<T> : IValidator<T>  where T : class
     {
         /// <summary>
@@ -18,15 +17,7 @@ namespace Validator
 
         public Validator() =>_validationRules = new List<IValidationRuleInternal<T>>();
 
-        /// <summary>
-		/// Defines a validation rule for a specify property.
-		/// </summary>
-		/// <example>
-		/// AddValidationFor(x => x.Surname)...
-		/// </example>
-        /// <typeparam name="TProperty">The type of property being validated.</typeparam>
-        /// <param name="expression">The expression representing the property to validate.</param>
-        /// <returns>Instance of <see cref="IRuleBuilder{T, TProperty}"/> on which validators can be defined.</returns>
+        /// <inheritdoc cref="IValidator{T}.AddValidationFor{TProperty}"/>.
         public IRuleBuilder<T, TProperty> AddValidationFor<TProperty>(Expression<Func<T, TProperty>> expression)
         {
             expression.Guard("Cannot pass null to AddValidationFor", nameof(expression));
@@ -51,15 +42,15 @@ namespace Validator
             return this;
         }
 
-        public bool Validate(T obj)
+        /// <inheritdoc cref="IValidator{T}.Validate"/>.
+        public ValidationResult Validate(ValidationContext<T> context)
         {
-            //var validationResults = new List<ValidationFailure>();
+            var result = new ValidationResult(context.Failures);
 
-            //foreach (var validation in _validationRules)
-            //    validationResults.Add(validation.Validate(obj));
+            foreach (var rule in _validationRules)
+                rule.Validate(context);
 
-            //return validationResults.All(x => x);
-            return true;
+            return result;
         }
     }
 }

@@ -21,5 +21,12 @@ namespace Validator.Validators
         /// This is used as the default Error Code for the validator.
         /// </summary>
         string Name { get; }
+
+        /// <summary>
+		/// Returns the default error message template for this validator, when not overridden.
+		/// </summary>
+		/// <param name="errorCode"></param>
+		/// <returns></returns>
+		string GetDefaultMessageTemplate(string errorCode);
     }
 }

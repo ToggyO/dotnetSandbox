@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-using Expressions.Libs.Validator.Results;
+using Validator.Results;
 
 namespace Validator
 {
@@ -23,6 +23,6 @@ namespace Validator
         /// <summary>
         /// Gets or sets a collection of validation errors <see cref="ValidationFailure"/>.
         /// </summary>
-        List<ValidationFailure> Failures { get; }
+        IList<ValidationFailure> Failures { get; }
     }
 }

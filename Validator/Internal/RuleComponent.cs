@@ -15,7 +15,7 @@ namespace Validator.Internal
         /// <summary>
         /// Error message.
         /// </summary>
-        private readonly string _errorMessage;
+        private readonly string _errorMessage = "KEK";
 
         // TODO: add description
         private Func<ValidationContext<T>, bool> _condition;
@@ -33,5 +33,17 @@ namespace Validator.Internal
         public string ErrorMessage { get; set; }
 
         public RuleComponent(IPropertyValidator<T, TProperty> propertyValidator) => _propertyValidator = propertyValidator;
+
+        /// <summary>
+        /// Validate property value.
+        /// </summary>
+        /// <param name="context">Instance of <see cref="ValidationContext{T}"/>.</param>
+        /// <param name="value">Value being validate.</param>
+        /// <returns>Boolean validation result.</returns>
+        internal bool Validate(ValidationContext<T> context, TProperty value) => Validate(context, value);
+
+        /// <inheritdoc cref="IRuleComponent{T, TProperty}.Validate"/>
+        bool IRuleComponent<T, TProperty>.Validate(ValidationContext<T> context, TProperty value)
+            => _propertyValidator.IsValid(context, value);
     }
 }

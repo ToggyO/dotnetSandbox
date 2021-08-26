@@ -12,5 +12,15 @@ namespace Validator.Validators
         
         /// <inheritdoc cref="IPropertyValidator{T,TProperty}.IsValid"/>.
         public abstract bool IsValid(ValidationContext<T> context, TProperty value);
+
+        string IPropertyValidator.GetDefaultMessageTemplate(string errorCode)
+            => GetDefaultMessageTemplate(errorCode);
+
+        /// <summary>
+        /// Returns the default error message template for this validator, when not overridden.
+        /// </summary>
+        /// <param name="errorCode">The currently configured error code for the validator.</param>
+        /// <returns></returns>
+        protected virtual string GetDefaultMessageTemplate(string errorCode) => "No default error message has been specified";
     }
 }

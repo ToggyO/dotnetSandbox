@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
-
-using Expressions.Libs.Validator;
+using System.Threading;
 
 namespace Validator.Internal
 {
@@ -23,12 +22,23 @@ namespace Validator.Internal
         public static PropertyRule<T, TProperty> Create(Expression<Func<T, TProperty>> expression)
         {
             var member = expression.GetMember();
-            return new PropertyRule<T, TProperty>(member, x => expression.Compile()(x), typeof(TProperty));
+            // TODO: add cache for compiled expression
+            var compiled = expression.Compile();
+            return new PropertyRule<T, TProperty>(member, x => compiled(x), typeof(TProperty));
         }
 
-        public bool Validate(ValidationContext<T> context)
+        /// <inheritdoc cref="IValidationRuleInternal{T}.Validate"/>
+        public void Validate(ValidationContext<T> context)
         {
-            throw new NotImplementedException();
+            var accessor = new Lazy<TProperty>(() => PropertyFunc(context.InstanceToValidate), LazyThreadSafetyMode.None);
+            context.InitializeForPropertyValidator(PropertyName);
+
+            foreach (var validator in Components)
+            {
+                bool isValid = validator.Validate(context, accessor.Value);
+                if (!isValid)
+                    context.Failures.Add(CreateValidationError(context, accessor.Value, validator));
+            }
         }
     }
 }
