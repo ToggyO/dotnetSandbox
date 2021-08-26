@@ -76,7 +76,7 @@ namespace Validator.Internal
         protected ValidationFailure CreateValidationError(
             ValidationContext<T> context, TProperty value, IRuleComponent<T, TProperty> component)
         {
-            string error = component.Get
+            string error = component.GetErrorMessage(context, value);
 
             var failure = new ValidationFailure(PropertyName, error);
 
