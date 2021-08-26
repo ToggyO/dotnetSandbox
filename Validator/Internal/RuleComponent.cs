@@ -45,5 +45,17 @@ namespace Validator.Internal
         /// <inheritdoc cref="IRuleComponent{T, TProperty}.Validate"/>
         bool IRuleComponent<T, TProperty>.Validate(ValidationContext<T> context, TProperty value)
             => _propertyValidator.IsValid(context, value);
+
+        /// <summary>
+		/// Gets the error message. If a context is supplied, it will be used to format the message if it has placeholders.
+		/// If no context is supplied, the raw unformatted message will be returned, containing placeholders.
+		/// </summary>
+		/// <param name="context">The validation context.</param>
+		/// <param name="value">The current property value.</param>
+		/// <returns>Either the formatted or unformatted error message.</returns>
+        public string GetErrorMessage(ValidationContext<T> context, TProperty value)
+        {
+            return Validator.GetDefaultMessageTemplate(ErrorCode);
+        }
     }
 }
