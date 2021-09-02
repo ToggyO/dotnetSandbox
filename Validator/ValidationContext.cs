@@ -28,9 +28,15 @@ namespace Validator
         {}
 
         public ValidationContext(T instanceToValidate, List<ValidationFailure> errors)
+            : this(instanceToValidate, errors, ValidatorOptions.Global.MessageFormatterFactory())
+        { }
+
+        internal ValidationContext(
+            T instanceToValidate, List<ValidationFailure> errors, MessageFormatter messageFormatter)
         {
             InstanceToValidate = instanceToValidate;
             Failures = errors;
+            MessageFormatter = messageFormatter;
         }
 
         /// <summary>
@@ -43,6 +49,11 @@ namespace Validator
 		/// If accessed inside a child validator, this will include the parent's path too.
 		/// </summary>
 		public string PropertyName { get; private set; }
+        
+        /// <summary>
+        /// The message formatter used to construct error messages.
+        /// </summary>
+        public MessageFormatter MessageFormatter { get; }
 
         /// <summary>
         /// Adds a new validation failure.

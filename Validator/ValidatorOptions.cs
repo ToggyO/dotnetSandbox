@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
+using Validator.Internal;
 using Validator.Validators;
 
 namespace Validator
@@ -11,10 +12,21 @@ namespace Validator
     /// </summary>
     public class ValidatorConguration
     {
+        private Func<MessageFormatter> _messageFormatterFactory = () => new MessageFormatter();
+
         private Func<MemberInfo, LambdaExpression, string> _propertyNameResolver = DefaultPropertyNameResolver;
 
         private Func<IPropertyValidator, string> _errorCodeResolver = DefaultErrorCodeResolver;
 
+        /// <summary>
+        /// Specifies a factory for creating MessageFormatter instances.
+        /// </summary>
+        public Func<MessageFormatter> MessageFormatterFactory
+        {
+            get => _messageFormatterFactory;
+            set => _messageFormatterFactory = value ?? (() => new MessageFormatter());
+    }
+        
         /// <summary>
 		/// Pluggable logic for resolving property names
 		/// </summary>
