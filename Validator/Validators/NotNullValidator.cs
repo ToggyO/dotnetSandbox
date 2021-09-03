@@ -1,3 +1,5 @@
+using Validator.Internal;
+
 namespace Validator.Validators
 {
     /// <summary>
@@ -12,6 +14,12 @@ namespace Validator.Validators
 
         /// <inheritdoc cref="PropertyValidator{T,TProperty}.IsValid"/>
         public override bool IsValid(ValidationContext<T> context, TProperty value) => value != null;
+
+        /// <inheritdoc cref="PropertyValidator{T,TProperty}.GetDefaultMessageTemplate"/>
+        protected override string GetDefaultMessageTemplate(string errorCode)
+        {
+            return ValidatorOptions.Global.MessageManager.ResolveErrorMessageUsingErrorCode(errorCode, Name);
+        }
     }
     
     public interface INotNullValidator : IPropertyValidator
