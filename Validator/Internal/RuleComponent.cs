@@ -15,7 +15,7 @@ namespace Validator.Internal
         /// <summary>
         /// Error message.
         /// </summary>
-        private readonly string _errorMessage = "KEK";
+        private readonly string _errorMessage;
 
         // TODO: add description
         private Func<ValidationContext<T>, bool> _condition;

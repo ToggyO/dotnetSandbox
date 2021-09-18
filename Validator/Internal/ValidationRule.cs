@@ -67,6 +67,17 @@ namespace Validator.Internal
         object IValidationRule<T>.GetPropertyValue(T instance) => PropertyFunc(instance);
 
         /// <summary>
+        /// Prepares the <see cref="MessageFormatter"/> of <paramref name="context"/> for an upcoming <see cref="ValidationFailure"/>.
+        /// </summary>
+        /// <param name="context">The validator context</param>
+        /// <param name="value">Property value.</param>
+        protected void PrepareMessageFormatterForValidationError(ValidationContext<T> context, TProperty value)
+        {
+            context.MessageFormatter.AppendPropertyName(context.PropertyName);
+            context.MessageFormatter.AppendPropertyValue(value);
+        }
+
+        /// <summary>
 		/// Creates an error validation result for this validator.
 		/// </summary>
 		/// <param name="context">The validator context.</param>

@@ -12,6 +12,11 @@ namespace Validator.Validators
 
         /// <inheritdoc cref="PropertyValidator{T,TProperty}.IsValid"/>
         public override bool IsValid(ValidationContext<T> context, TProperty value) => value != null;
+
+        protected override string GetDefaultMessageTemplate(string errorCode)
+        {
+            return base.GetDefaultMessageTemplate(errorCode);
+        }
     }
     
     public interface INotNullValidator : IPropertyValidator

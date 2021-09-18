@@ -35,9 +35,14 @@ namespace Validator.Internal
 
             foreach (var validator in Components)
             {
+                context.MessageFormatter.Reset();
+
                 bool isValid = validator.Validate(context, accessor.Value);
                 if (!isValid)
+                {
+                    PrepareMessageFormatterForValidationError(context, accessor.Value);
                     context.Failures.Add(CreateValidationError(context, accessor.Value, validator));
+                }
             }
         }
     }

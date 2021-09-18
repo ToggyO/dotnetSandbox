@@ -9,7 +9,7 @@ namespace Validator
             var dto = new Dto
             {
                 Id = 0,
-                Name = "ololo",
+                Name = null,
                 Description = "",
             };
 
