@@ -21,7 +21,7 @@ namespace Validator
         /// <summary>
         /// Gets or sets a collection of validation errors <see cref="ValidationFailure"/>.
         /// </summary>
-        internal List<ValidationFailure> Failures { get; }
+        internal IList<ValidationFailure> Failures { get; }
         
         public ValidationContext(T instanceToValidate)
             : this(instanceToValidate, new List<ValidationFailure>())
@@ -32,7 +32,7 @@ namespace Validator
         { }
 
         internal ValidationContext(
-            T instanceToValidate, List<ValidationFailure> errors, MessageFormatter messageFormatter)
+            T instanceToValidate, IList<ValidationFailure> errors, MessageFormatter messageFormatter)
         {
             InstanceToValidate = instanceToValidate;
             Failures = errors;
@@ -54,6 +54,32 @@ namespace Validator
         /// The message formatter used to construct error messages.
         /// </summary>
         public MessageFormatter MessageFormatter { get; }
+
+        /// <summary>
+        /// Gets or creates generic validation context from non-generic validation context.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
+        public static ValidationContext<T> GetFromNonGenericContext(IValidationContext context)
+        {
+            if (context == null) throw new ArgumentNullException(nameof(context));
+
+            if (context is ValidationContext<T> c)
+                return c;
+
+            var failures = (context is IHasFailures f) ? f.Failures : new List<ValidationFailure>();
+            if (context.InstanceToValidate is T instanceToValidate)
+                return new ValidationContext<T>(instanceToValidate, failures,
+                    ValidatorOptions.Global.MessageFormatterFactory());
+
+            if (context.InstanceToValidate is null)
+                return new ValidationContext<T>(default, failures,
+                    ValidatorOptions.Global.MessageFormatterFactory());
+            
+            throw new InvalidOperationException($"Cannot validate instances of type '{context.InstanceToValidate.GetType().Name}'. This validator can only validate instances of type '{typeof(T).Name}'.");
+        }
 
         /// <summary>
         /// Adds a new validation failure.
