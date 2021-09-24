@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using WebApi.Extensions;
+using WebApi.Services;
 
 namespace WebApi
 {
@@ -32,6 +34,12 @@ namespace WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
             });
+            
+            services.RegisterServicesFromAssembly<Service1>();
+            services.RegisterServicesFromAssembly<Service2>();
+
+            var serviceProvider = services.BuildServiceProvider();
+            serviceProvider.GetRequiredService<IService2>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

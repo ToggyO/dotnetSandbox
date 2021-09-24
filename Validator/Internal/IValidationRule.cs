@@ -15,7 +15,7 @@ namespace Validator.Internal
         /// <summary>
 		/// Function that can be invoked to retrieve the value of the property.
 		/// </summary>
-		public Func<T, TProperty> PropertyFunc { get; }
+        Func<T, TProperty> PropertyFunc { get; }
 
         /// <summary>
         /// Adds a validator to this rule.

@@ -15,7 +15,7 @@ namespace Validator.Internal
         /// <summary>
         /// Error message.
         /// </summary>
-        private readonly string _errorMessage;
+        private string _errorMessage;
 
         // TODO: add description
         private Func<ValidationContext<T>, bool> _condition;
@@ -49,7 +49,11 @@ namespace Validator.Internal
         /// <inheritdoc cref="IRuleComponent{T, TProperty}.GetErrorMessage"/>
         public string GetErrorMessage(ValidationContext<T> context, TProperty value)
         {
-            return _errorMessage ?? Validator.GetDefaultMessageTemplate(ErrorCode);
+            string template = _errorMessage ?? Validator.GetDefaultMessageTemplate(ErrorCode);
+            return context.MessageFormatter.BuildMessage(template);
         }
+        
+        /// <inheritdoc cref="IRuleComponent{T, TProperty}.SetErrorMessage"/>
+        public void SetErrorMessage(string errorMessage) => _errorMessage = errorMessage;
     }
 }

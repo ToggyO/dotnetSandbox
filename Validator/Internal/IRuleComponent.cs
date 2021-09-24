@@ -27,6 +27,12 @@ namespace Validator.Internal
 	    /// <param name="value">The current property value.</param>
 	    /// <returns>Either the formatted or unformatted error message.</returns>
 	    string GetErrorMessage(ValidationContext<T> context, TProperty value);
+	    
+	    /// <summary>
+	    /// Sets the overridden error message template for this validator.
+	    /// </summary>
+	    /// <param name="errorMessage">The error message to set</param>
+	    void SetErrorMessage(string errorMessage);
     }
 
     /// <summary>

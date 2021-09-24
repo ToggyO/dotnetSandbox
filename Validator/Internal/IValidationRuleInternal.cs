@@ -17,6 +17,11 @@ namespace Validator.Internal
         /// Collection of <see cref="RuleComponent{T, TProperty}"/>
         /// </summary>
         new List<IRuleComponent<T, TProperty>> Components { get; }
+        
+        /// <summary>
+        /// The current rule component.
+        /// </summary>
+        IRuleComponent<T, TProperty> Current { get; }
     }
 
     /// <summary>

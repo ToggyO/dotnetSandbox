@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 using Validator.Results;
@@ -26,6 +27,9 @@ namespace Validator.Internal
         /// Collection of <see cref="RuleComponent{T, TProperty}"/>
         /// </summary>
         public List<IRuleComponent<T, TProperty>> Components => _components;
+        
+        /// <inheritdoc cref="IValidationRuleInternal{T, TPropery}.Current"/>
+        public IRuleComponent<T, TProperty> Current => _components.LastOrDefault();
 
         /// <inheritdoc cref="IValidationRule.PropertyName"/>
         public string PropertyName { get; }

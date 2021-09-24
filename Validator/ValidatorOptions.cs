@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 
 using Validator.Internal;
+using Validator.Resources;
 using Validator.Validators;
 
 namespace Validator
@@ -18,6 +19,8 @@ namespace Validator
 
         private Func<IPropertyValidator, string> _errorCodeResolver = DefaultErrorCodeResolver;
 
+        private IMessageManager _messageManager = new MessageManager();
+
         /// <summary>
         /// Specifies a factory for creating MessageFormatter instances.
         /// </summary>
@@ -28,7 +31,7 @@ namespace Validator
     }
         
         /// <summary>
-		/// Pluggable logic for resolving property names
+		/// Pluggable logic for resolving property names.
 		/// </summary>
         public Func<MemberInfo, LambdaExpression, string> PropertyNameResolver
         {
@@ -37,12 +40,21 @@ namespace Validator
         }
 
         /// <summary>
-		/// Pluggable resolver for default error codes
+		/// Pluggable resolver for default error codes.
 		/// </summary>
         public Func<IPropertyValidator, string> ErrorCodeResolver
         {
             get => _errorCodeResolver;
             set => _errorCodeResolver = value ?? DefaultErrorCodeResolver;
+        }
+
+        /// <summary>
+		/// Default message manager.
+		/// </summary>
+        public IMessageManager MessageManager
+        {
+            get => _messageManager;
+            set => _messageManager = value ?? throw new ArgumentNullException(nameof(value));
         }
 
 

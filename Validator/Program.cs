@@ -15,7 +15,10 @@ namespace Validator
 
             IValidator<Dto> validator = new Validator<Dto>();
 
-            validator.AddValidationFor(x => x.Name).NotNull();
+            validator.AddValidationFor(x => x.Name)
+                .NotNull()
+                .WithMessage("AAAA MESSAGE!")
+                .WithErrorCode("not_null");
 
             var context = new ValidationContext<Dto>(dto);
             var result = validator.Validate(context);
@@ -23,6 +26,7 @@ namespace Validator
             foreach (var error in result.Errors)
             {
                 Console.WriteLine(error.ErrorMessage);
+                Console.WriteLine(error.ErrorCode);
             }
         }
     }
