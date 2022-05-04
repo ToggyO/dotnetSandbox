@@ -22,8 +22,7 @@ namespace Validator.Internal
         public static PropertyRule<T, TProperty> Create(Expression<Func<T, TProperty>> expression)
         {
             var member = expression.GetMember();
-            // TODO: add cache for compiled expression
-            var compiled = expression.Compile();
+            var compiled = AccessorCache<T>.GetCachedAccessor(member, expression);
             return new PropertyRule<T, TProperty>(member, x => compiled(x), typeof(TProperty));
         }
 

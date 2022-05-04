@@ -5,7 +5,7 @@ namespace Validator
     /// <summary>
     /// Factory for creating validators
     /// </summary>
-    public class ValidatorFactory : IValidatorFactory
+    public abstract class ValidatorFactoryBase : IValidatorFactory
     {
         /// <summary>
         /// Gets a validator for a type
@@ -28,9 +28,8 @@ namespace Validator
         /// <summary>
         /// Instantiates the validator
         /// </summary>
-        /// <param name="validatorType"></param>
-        /// <returns></returns>
-        public virtual IValidator CreateInstance(Type validatorType)
-            => (IValidator)Activator.CreateInstance(validatorType);
+        /// <param name="validatorType">Type io validator.</param>
+        /// <returns>Instance of <see cref="IValidator"/>.</returns>
+        public abstract IValidator CreateInstance(Type validatorType);
     }
 }
