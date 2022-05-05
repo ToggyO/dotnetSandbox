@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDomainDemo", "AppDomainD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator", "Validator\Validator.csproj", "{2640E4FE-2FFB-4A3B-AA34-0464E51F7A78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnsafeProject", "UnsafeProject\UnsafeProject.csproj", "{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,5 +130,17 @@ Global
 		{2640E4FE-2FFB-4A3B-AA34-0464E51F7A78}.Release|x64.Build.0 = Release|Any CPU
 		{2640E4FE-2FFB-4A3B-AA34-0464E51F7A78}.Release|x86.ActiveCfg = Release|Any CPU
 		{2640E4FE-2FFB-4A3B-AA34-0464E51F7A78}.Release|x86.Build.0 = Release|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Debug|x64.Build.0 = Debug|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Debug|x86.Build.0 = Debug|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Release|x64.ActiveCfg = Release|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Release|x64.Build.0 = Release|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Release|x86.ActiveCfg = Release|Any CPU
+		{D8F3AE25-16F5-4B71-B98D-ABBA9C5F9905}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
