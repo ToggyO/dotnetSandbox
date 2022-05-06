@@ -51,7 +51,6 @@ namespace Validator.Internal
             Member = member;
             PropertyFunc = propertyFunc;
             TypeToValidate = typeToValidate;
-            // TODO: check
             PropertyName = member.Name;
         }
 

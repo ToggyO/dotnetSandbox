@@ -13,16 +13,15 @@ namespace Validator
                 Description = "",
             };
 
-            var assemblyScanResults = new AssemblyScanner().Execute();
+            // var assemblyScanResults = new AssemblyScanner().Execute();
+            //
+            // foreach (var result in assemblyScanResults)
+            // {
+            //     Console.WriteLine(result.InterfaceType.Name);
+            //     Console.WriteLine(result.ValidatorType.Name);
+            // }
 
-            foreach (var result in assemblyScanResults)
-            {
-                Console.WriteLine(result.InterfaceType.Name);
-                Console.WriteLine(result.ValidatorType.Name);
-            }
-
-            IValidatorFactory validatorFactory = new ValidatorFactory();
-            var validator = validatorFactory.GetValidator<DtoValidator>();
+            var validator = new DtoValidator();
             
             var context = new ValidationContext<Dto>(dto);
             var validationResult = validator.Validate(context);
@@ -68,6 +67,11 @@ namespace Validator
                 .NotNull()
                 .WithMessage("AAAA MESSAGE!")
                 .WithErrorCode("not_null");
+            
+            AddValidationFor(x => x.Name)
+                .NotNull()
+                .WithMessage("Name is required.")
+                .WithErrorCode("validation.reuqired");
         }
     }
 }
