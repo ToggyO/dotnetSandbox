@@ -1,6 +1,6 @@
 namespace AlgorithmsAndDataStructures.Common.Interfaces
 {
-    public interface IDataStructureTest
+    public interface ITest
     {
         void Run();
     }

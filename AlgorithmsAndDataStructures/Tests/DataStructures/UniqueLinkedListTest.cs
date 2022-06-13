@@ -1,12 +1,11 @@
 using System;
-
 using AlgorithmsAndDataStructures.Common.Classes;
 using AlgorithmsAndDataStructures.Common.Interfaces;
 using AlgorithmsAndDataStructures.DataStructures.LinkedList;
 
-namespace AlgorithmsAndDataStructures.Tests
+namespace AlgorithmsAndDataStructures.Tests.DataStructures
 {
-    public class UniqueLinkedListTest : IDataStructureTest
+    public class UniqueLinkedListTest : ITest
     {
         public void Run()
         {

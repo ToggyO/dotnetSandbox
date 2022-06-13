@@ -1,12 +1,11 @@
 using System;
-
 using AlgorithmsAndDataStructures.Common.Classes;
 using AlgorithmsAndDataStructures.Common.Interfaces;
 using AlgorithmsAndDataStructures.DataStructures.Stack;
 
-namespace AlgorithmsAndDataStructures.Tests
+namespace AlgorithmsAndDataStructures.Tests.DataStructures
 {
-    public class StackTest : IDataStructureTest
+    public class StackTest : ITest
     {
         public void Run()
         {

@@ -1,12 +1,11 @@
 using System;
-
 using AlgorithmsAndDataStructures.Common.Classes;
 using AlgorithmsAndDataStructures.Common.Interfaces;
 using AlgorithmsAndDataStructures.DataStructures.LinkedList;
 
-namespace AlgorithmsAndDataStructures.Tests
+namespace AlgorithmsAndDataStructures.Tests.DataStructures
 {
-    public class DoubleLinkedListTest : IDataStructureTest
+    public class DoubleLinkedListTest : ITest
     {
         public void Run()
         {

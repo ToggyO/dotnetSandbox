@@ -12,13 +12,13 @@ namespace AlgorithmsAndDataStructures
         {
             var testsCollection = from t in Assembly.GetExecutingAssembly().ExportedTypes
                 where !t.IsAbstract && !t.IsInterface
-                                    && typeof(IDataStructureTest).IsAssignableFrom(t)
+                                    && typeof(ITest).IsAssignableFrom(t)
                 select t;
 
             foreach (var test in testsCollection)
             {
                 var instance = Activator.CreateInstance(test);
-                ((IDataStructureTest) instance).Run();
+                ((ITest) instance).Run();
             }
         }
     }
