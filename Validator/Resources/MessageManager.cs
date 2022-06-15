@@ -43,7 +43,5 @@ namespace Validator.Resources
 			"InclusiveBetween_Simple" => "'{PropertyName}' must be between {From} and {To}.",
 			_ => null,
 		};
-
-
 	}
 }
