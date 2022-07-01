@@ -1,0 +1,39 @@
+namespace AlgorithmsAndDataStructures.Algorithms.Sorter
+{
+    public static partial class Sorter
+    {
+        public static void QuickSortV2(int[] source)
+        {
+            Srt(source, 0, source.Length - 1);
+        }
+
+        private static void Srt(int[] source, int low, int high)
+        {
+            if (source.Length < 1)
+                return;
+
+            int mid = low + (high - low) / 2;
+            int l = low;
+            int r = high;
+
+            while (l <= r)
+            {
+                while (source[l] < source[mid])
+                    l++;
+
+                while (source[r] > source[mid])
+                    r--;
+
+                if (l <= r)
+                {
+                    (source[l], source[r]) = (source[r], source[l]);
+                    l++;
+                    r--;
+                }
+
+                Srt(source, low, mid);
+                Srt(source, mid + 1, high);
+            }
+        }
+    }
+}
